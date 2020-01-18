@@ -1,0 +1,70 @@
+/* fonts
+   -----
+   
+   
+   */
+
+
+body {
+    margin: 0;
+    padding: 0;
+    /* font-family: ; */
+}
+
+/* ================
+     TYPOGRAPHY 
+================ */
+
+h1 {
+    font-family: ;
+    font-weight: ;
+    color: ;
+    margin: 0;
+}
+
+.site-subtitle {
+    font-weight: ;
+    color: ;
+    font-size: .75rem;
+    margin: 0;
+}
+
+
+/* ================
+      LAYOUT
+================ */
+
+header {
+    text-align: center;
+    background: #f8f8f8;
+    padding: 2em 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 1em;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: 700;
+    ;
+}
+
+nav a:hover,
+nav a:focus {
+    color: ;
+
+}
+
+.current-page {
+    border-bottom: 1px solid #707070;
+    padding: 0;
+    margin: 0;
+}
