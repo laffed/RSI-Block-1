@@ -2,5 +2,4 @@
 
 Library Catalogue Project
 
-change 2
-1/20/20 @ 0925
+Fullstack project for RSI training period. 
