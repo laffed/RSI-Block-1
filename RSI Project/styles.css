@@ -37,6 +37,7 @@ header {
   text-align: center;
   background: #f8f8f8;
   padding: 2em 0;
+  position: relative;
 }
 
 nav ul {
@@ -59,6 +60,37 @@ nav a {
 nav a:hover,
 nav a:focus {
   color: rgb(211, 4, 4);
+}
+
+.wrapper {
+  margin: 10px;
+  padding: 10px;
+}
+
+.table-data {
+  justify-content: space-between;
+  align-content: center;
+  text-align: center;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+.table-data table {
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  margin: auto;
+  border-spacing: 0;
+}
+
+table,
+th,
+td {
+  border: 1px black solid;
+}
+
+th,
+td {
+  padding: 10px;
 }
 
 .search {
@@ -86,7 +118,6 @@ nav a:focus {
   width: 40px;
   height: 28.75px;
   border: 2px solid #aa8439;
-  /* background: #aa3939; */
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
@@ -95,11 +126,12 @@ nav a:focus {
 }
 
 .search-wrap {
-  width: 70%;
-  position: absolute;
-  top: 120%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 60%;
+  margin: auto;
+  padding-bottom: 20px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 /* ================
    MOBILE RESPONSE
@@ -124,12 +156,16 @@ nav a:focus {
 
   .nav-links {
     position: absolute;
-    left: 0;
     height: 500%;
     top: 90%;
     flex-direction: column;
     width: 100%;
     transform: translate(100%);
+    background-color: white;
+  }
+
+  .nav-links li {
+    padding: 20px;
   }
 }
 
