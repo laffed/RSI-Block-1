@@ -133,6 +133,12 @@ td {
   justify-content: center;
   align-items: center;
 }
+
+.support-text {
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+}
 /* ================
    MOBILE RESPONSE
 ================ */
