@@ -1,43 +1,4 @@
 //script for library catalogue
-
-const navSlide = () => {
-  const burger = document.querySelector(".burger-menu");
-  const nav = document.querySelector(".nav-links");
-
-  burger.addEventListener("click", () => {
-    nav.classList.toggle("nav-active");
-  });
-};
-
-const app = () => {
-  navSlide();
-};
-
-app();
-
-function searchFunction() {
-  let input, filter, table, tr, td, i, txtValue;
-
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1]; //search by name. change index for diff search terms
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-
-//database
-
 let coworkerDB = [
   {
     id: "id",
@@ -229,3 +190,54 @@ let coworkerDB = [
     Notes: ""
   }
 ];
+
+const navSlide = () => {
+  const burger = document.querySelector(".burger-menu");
+  const nav = document.querySelector(".nav-links");
+
+  burger.addEventListener("click", () => {
+    nav.classList.toggle("nav-active");
+  });
+};
+
+const app = () => {
+  navSlide();
+};
+app();
+
+let table = document.getElementById("myTable");
+
+for (let i = 1; i < coworkerDB.length; i++) {
+  //create new row
+  let newRow = table.insertRow();
+  let data = Object.values(coworkerDB[i]);
+  console.log(data);
+  for (let j = 0; j < data.length; j++) {
+    //create new cell
+    var cell = newRow.insertCell(j);
+
+    //add value to cells
+    cell.innerHTML = data[j];
+  }
+}
+
+function searchFunction() {
+  let input, filter, table, tr, td, i, txtValue;
+
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1]; //search by name. change index for diff search terms
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
