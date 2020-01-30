@@ -222,18 +222,30 @@ for (let i = 1; i < coworkerDB.length; i++) {
 }
 
 function searchFunction() {
-  let input, filter, table, tr, td, i, txtValue;
+  let input,
+    filter,
+    table,
+    tr,
+    firstName,
+    lastName,
+    firstNameValue,
+    lastNameValue;
 
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
 
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1]; //search by name. change index for diff search terms
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+  for (let i = 0; i < tr.length; i++) {
+    firstName = tr[i].getElementsByTagName("td")[1]; //search by name. change index for diff search terms
+    lastName = tr[i].getElementsByTagName("td")[2];
+    if (firstName || lastName) {
+      firstNameValue = firstName.textContent || firstName.innerText;
+      lastNameValue = lastName.textContent || lastName.innerText;
+      if (
+        firstNameValue.toUpperCase().indexOf(filter) > -1 ||
+        lastNameValue.toUpperCase().indexOf(filter) > -1
+      ) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
