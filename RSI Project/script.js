@@ -204,28 +204,51 @@ function filterItems(
   query = document.getElementById("myInput")
 ) {
   let input = query.value;
+
+  if (input.length === 0) {
+    return [];
+  }
+
   return arr.filter(function(fil) {
-    return fil.firstName.toLowerCase().indexOf(input.toLowerCase()) !== -1;
+    return fil.firstName.toLowerCase().indexOf(input.toLowerCase()) >= 0;
   });
 }
 
 function searchAndMake() {
   let searchedData = filterItems();
-  // console.log(searchedData);
   let table = document.getElementById("tableEntries");
+  let tableHtml = "";
   table.innerHTML = "";
-  for (let i = 0; i < searchedData.length; i++) {
-    //create new row
-    let newRow = table.insertRow();
-    let data = Object.values(searchedData[i]);
-    for (let j = 0; j < data.length; j++) {
-      //create new cell
-      var cell = newRow.insertCell(j);
 
-      //add value to cells
-      cell.innerHTML = data[j];
-    }
+  function createRow(item) {
+    let rowHtml = `
+      <tr>
+        <td>${item.id}</td>
+        <td>${item.firstName}</td>
+        <td>${item.LastName}</td>
+        <td>${item.Role}</td>
+        <td>${item.Notes}</td>
+      </tr>
+    `;
+    tableHtml += rowHtml;
   }
+
+  searchedData.map(item => createRow(item));
+  table.innerHTML = tableHtml;
+
+  //Old Iteration of search function
+  // for (let i = 0; i < searchedData.length; i++) {
+  //   //create new row
+  //   let newRow = table.insertRow();
+  //   let data = Object.values(searchedData[i]);
+  //   for (let j = 0; j < data.length; j++) {
+  //     //create new cell
+  //     var cell = newRow.insertCell(j);
+
+  //     //add value to cells
+  //     cell.innerHTML = data[j];
+  //   }
+  // }
 }
 
 // (function tableMaker() {
@@ -268,7 +291,8 @@ function searchAndMake() {
 //       if (
 //         firstNameValue.toUpperCase().indexOf(filter) > -1 ||
 //         lastNameValue.toUpperCase().indexOf(filter) > -1
-//       ) {
+//
+//     {
 //         tr[i].style.display = "";
 //       } else {
 //         tr[i].style.display = "none";
