@@ -1,13 +1,6 @@
 //script for library catalogue
 const coworkerDB = [
   {
-    id: "id",
-    firstName: "First Name",
-    LastName: "Last Name",
-    Role: "Role",
-    Notes: "Notes"
-  },
-  {
     id: "1",
     firstName: "John",
     LastName: "Kangsumrith",
@@ -219,8 +212,9 @@ function filterItems(
 function searchAndMake() {
   let searchedData = filterItems();
   // console.log(searchedData);
-  let table = document.getElementById("myTable");
-  for (let i = 1; i < searchedData.length; i++) {
+  let table = document.getElementById("tableEntries");
+  table.innerHTML = "";
+  for (let i = 0; i < searchedData.length; i++) {
     //create new row
     let newRow = table.insertRow();
     let data = Object.values(searchedData[i]);
