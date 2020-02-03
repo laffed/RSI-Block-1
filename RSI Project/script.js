@@ -1,5 +1,5 @@
 //script for library catalogue
-let coworkerDB = [
+const coworkerDB = [
   {
     id: "id",
     firstName: "First Name",
@@ -163,17 +163,17 @@ let coworkerDB = [
   },
   {
     id: "23",
-    firstName: "",
-    LastName: "",
-    Role: "",
-    Notes: ""
+    firstName: "Andre",
+    LastName: "Gueret",
+    Role: "Java Dev",
+    Notes: "Python Hobbyist"
   },
   {
     id: "24",
-    firstName: "",
-    LastName: "",
-    Role: "",
-    Notes: ""
+    firstName: "Justin",
+    LastName: "Haney",
+    Role: "Frontend Dev",
+    Notes: "React JS"
   },
   {
     id: "25",
@@ -200,56 +200,85 @@ const navSlide = () => {
   });
 };
 
-const app = () => {
+(function apps() {
   navSlide();
-};
-app();
+})();
 
-let table = document.getElementById("myTable");
-
-for (let i = 1; i < coworkerDB.length; i++) {
-  //create new row
-  let newRow = table.insertRow();
-  let data = Object.values(coworkerDB[i]);
-  console.log(data);
-  for (let j = 0; j < data.length; j++) {
-    //create new cell
-    var cell = newRow.insertCell(j);
-
-    //add value to cells
-    cell.innerHTML = data[j];
-  }
+//tableMaker populates creates and populates table with coworkerDB data
+//cannot return more than one value therefore can only search for firstname
+function filterItems(
+  arr = coworkerDB,
+  query = document.getElementById("myInput")
+) {
+  let input = query.value;
+  return arr.filter(function(fil) {
+    return fil.firstName.toLowerCase().indexOf(input.toLowerCase()) !== -1;
+  });
 }
 
-function searchFunction() {
-  let input,
-    filter,
-    table,
-    tr,
-    firstName,
-    lastName,
-    firstNameValue,
-    lastNameValue;
+function searchAndMake() {
+  let searchedData = filterItems();
+  // console.log(searchedData);
+  let table = document.getElementById("myTable");
+  for (let i = 1; i < searchedData.length; i++) {
+    //create new row
+    let newRow = table.insertRow();
+    let data = Object.values(searchedData[i]);
+    for (let j = 0; j < data.length; j++) {
+      //create new cell
+      var cell = newRow.insertCell(j);
 
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-
-  for (let i = 0; i < tr.length; i++) {
-    firstName = tr[i].getElementsByTagName("td")[1]; //search by name. change index for diff search terms
-    lastName = tr[i].getElementsByTagName("td")[2];
-    if (firstName || lastName) {
-      firstNameValue = firstName.textContent || firstName.innerText;
-      lastNameValue = lastName.textContent || lastName.innerText;
-      if (
-        firstNameValue.toUpperCase().indexOf(filter) > -1 ||
-        lastNameValue.toUpperCase().indexOf(filter) > -1
-      ) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
+      //add value to cells
+      cell.innerHTML = data[j];
     }
   }
 }
+
+// (function tableMaker() {
+//   let table = document.getElementById("myTable");
+//   for (let i = 1; i < coworkerDB.length; i++) {
+//     //create new row
+//     let newRow = table.insertRow();
+//     let data = Object.values(coworkerDB[i]);
+//     for (let j = 0; j < data.length; j++) {
+//       //create new cell
+//       var cell = newRow.insertCell(j);
+
+//       //add value to cells
+//       cell.innerHTML = data[j];
+//     }
+//   }
+// })();
+
+// function searchFunction() {
+//   let input,
+//     filter,
+//     table,
+//     tr,
+//     firstName,
+//     lastName,
+//     firstNameValue,
+//     lastNameValue;
+
+//   input = document.getElementById("myInput");
+//   filter = input.value.toUpperCase();
+//   table = document.getElementById("myTable");
+//   tr = table.getElementsByTagName("tr");
+
+//   for (let i = 0; i < tr.length; i++) {
+//     firstName = tr[i].getElementsByTagName("td")[1]; //search by name. change index for diff search terms
+//     lastName = tr[i].getElementsByTagName("td")[2];
+//     if (firstName || lastName) {
+//       firstNameValue = firstName.textContent || firstName.innerText;
+//       lastNameValue = lastName.textContent || lastName.innerText;
+//       if (
+//         firstNameValue.toUpperCase().indexOf(filter) > -1 ||
+//         lastNameValue.toUpperCase().indexOf(filter) > -1
+//       ) {
+//         tr[i].style.display = "";
+//       } else {
+//         tr[i].style.display = "none";
+//       }
+//     }
+//   }
+// }
