@@ -170,17 +170,17 @@ const coworkerDB = [
   },
   {
     id: "25",
-    firstName: "",
-    LastName: "",
-    Role: "",
-    Notes: ""
+    firstName: "Chase",
+    LastName: "Harrison",
+    Role: "Web Consultant",
+    Notes: "friendly js"
   },
   {
     id: "26",
-    firstName: "",
-    LastName: "",
-    Role: "",
-    Notes: ""
+    firstName: "Chad",
+    LastName: "Fesler",
+    Role: "Senior .NET",
+    Notes: "Backend for React"
   }
 ];
 
@@ -205,8 +205,11 @@ function filterItems(
 ) {
   let input = query.value;
 
+  //if string is empty do not return table, if input is "*", dispaly entire DB
   if (input.length === 0) {
     return [];
+  } else if (input === "*") {
+    return coworkerDB;
   }
 
   return arr.filter(function(fil) {
