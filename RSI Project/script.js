@@ -238,68 +238,8 @@ function searchAndMake() {
 
   searchedData.map(item => createRow(item));
   table.innerHTML = tableHtml;
-
-  //Old Iteration of search function
-  // for (let i = 0; i < searchedData.length; i++) {
-  //   //create new row
-  //   let newRow = table.insertRow();
-  //   let data = Object.values(searchedData[i]);
-  //   for (let j = 0; j < data.length; j++) {
-  //     //create new cell
-  //     var cell = newRow.insertCell(j);
-
-  //     //add value to cells
-  //     cell.innerHTML = data[j];
-  //   }
-  // }
 }
 
-// (function tableMaker() {
-//   let table = document.getElementById("myTable");
-//   for (let i = 1; i < coworkerDB.length; i++) {
-//     //create new row
-//     let newRow = table.insertRow();
-//     let data = Object.values(coworkerDB[i]);
-//     for (let j = 0; j < data.length; j++) {
-//       //create new cell
-//       var cell = newRow.insertCell(j);
-
-//       //add value to cells
-//       cell.innerHTML = data[j];
-//     }
-//   }
-// })();
-
-// function searchFunction() {
-//   let input,
-//     filter,
-//     table,
-//     tr,
-//     firstName,
-//     lastName,
-//     firstNameValue,
-//     lastNameValue;
-
-//   input = document.getElementById("myInput");
-//   filter = input.value.toUpperCase();
-//   table = document.getElementById("myTable");
-//   tr = table.getElementsByTagName("tr");
-
-//   for (let i = 0; i < tr.length; i++) {
-//     firstName = tr[i].getElementsByTagName("td")[1]; //search by name. change index for diff search terms
-//     lastName = tr[i].getElementsByTagName("td")[2];
-//     if (firstName || lastName) {
-//       firstNameValue = firstName.textContent || firstName.innerText;
-//       lastNameValue = lastName.textContent || lastName.innerText;
-//       if (
-//         firstNameValue.toUpperCase().indexOf(filter) > -1 ||
-//         lastNameValue.toUpperCase().indexOf(filter) > -1
-//
-//     {
-//         tr[i].style.display = "";
-//       } else {
-//         tr[i].style.display = "none";
-//       }
-//     }
-//   }
-// }
+function printPage() {
+  window.print();
+}

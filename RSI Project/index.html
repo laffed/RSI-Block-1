@@ -33,16 +33,15 @@
       <div class="wrapper">
         <div class="search-wrap">
           <div class="search">
-            <input type="text" class="search-term" placeholder="Filter by First or Last Name:" id="myInput"
+            <button class="print-btn" onclick="printPage()"><img class="print-img" src="./img/print.png" alt="Print" ></button>
+            <input type="text" class="search-term" placeholder="Filter by First Name:" id="myInput"
               onkeyup="searchAndMake()" value=""> 
-              <!-- prev onkeyup = "searchFunction()" -->
-            <button type="submit" class="search-button"></button>
           </div>
         </div>
         <div class="table-data">
           <table id="myTable">
             <thead>
-              <tr>
+              <tr class="table-head">
                 <th>id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
