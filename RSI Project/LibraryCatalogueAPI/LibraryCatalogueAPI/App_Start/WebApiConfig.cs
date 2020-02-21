@@ -16,7 +16,7 @@ namespace LibraryCatalogueAPI
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{ID}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

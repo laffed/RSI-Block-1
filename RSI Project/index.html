@@ -34,8 +34,9 @@
         <div class="search-wrap">
           <div class="search">
             <button class="print-btn" onclick="printPage()"><img class="print-img" src="./img/print.png" alt="Print" ></button>
-            <input type="text" class="search-term" placeholder="Filter by First Name:" id="myInput"
-              onkeyup="searchAndMake()" value=""> 
+            <input type="text" class="search-term" placeholder="Filter by First Name:" id="myInput" autocomplete="off"
+               value="">
+              <button class="single-search-btn" onclick="singleSearch()" >SS</button> 
           </div>
         </div>
         <div class="table-data">

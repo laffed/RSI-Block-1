@@ -3,13 +3,17 @@
    
    
    */
+html {
+  height: 100%;
+  width: 100%;
+}
 
 body {
   margin: 0;
   padding: 0;
   font-family: "Courier Prime", monospace;
   position: relative;
-  height: 100%;
+  height: 80%;
 }
 
 /* ================
@@ -93,13 +97,20 @@ td {
   padding: 10px;
 }
 
-.print-btn {
+.print-btn,
+.single-search-btn {
   max-width: 25px;
   margin-right: 5px;
   display: flex;
   justify-content: center;
   border-radius: 5px 5px 5px 5px;
   border: none;
+}
+
+.single-search-btn:hover,
+.single-search-btn:focus {
+  border-radius: 5px 5px 5px 5px;
+  background-color: indianred;
 }
 
 .print-img:hover,
@@ -217,4 +228,22 @@ td {
   .search {
     display: none;
   }
+}
+
+/* Support Page Styles */
+
+.support-wrapper {
+  margin: 0 5% 0 5%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.support-wrapper h2 {
+  text-align: center;
+  margin: 5%;
+}
+
+.support-main {
+  margin-bottom: 10%;
 }

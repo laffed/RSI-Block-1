@@ -8,12 +8,13 @@ using LibraryCatalogueAPI.Models;
 
 namespace LibraryCatalogueAPI.Controllers
 {
+
     public class ValuesController : ApiController
     {
-        public ResponseModel Get()
+        List<Coworker> coworkers = new List<Coworker>();
+
+        public ValuesController()
         {
-            ResponseModel _objResponseModel = new ResponseModel();
-            List<Coworker> coworkers = new List<Coworker>();
             coworkers.Add(new Coworker
             {
                 ID = "1",
@@ -222,13 +223,40 @@ namespace LibraryCatalogueAPI.Controllers
                 Role = "Senior .NET",
                 Notes = "Backend for React"
             });
-
-
+        }
+        
+        public ResponseModel Get()
+        {
+            ResponseModel _objResponseModel = new ResponseModel();
+            
             _objResponseModel.Data = coworkers;
             _objResponseModel.Status = true;
             _objResponseModel.Message = "Data Recieved Successfully";
 
             return _objResponseModel;
+        }
+
+        
+        public Coworker Get(string id)
+        {
+            return coworkers.Where(x => x.FirstName.Contains(id) || x.LastName.Contains(id)).FirstOrDefault();
+        }
+
+        public void Post()
+        {
+
+        }
+
+        public void Put([FromBody]string ID, [FromBody]string FirstName, [FromBody]string LastName, [FromBody]string Role, [FromBody]string Notes)
+        {
+            coworkers.Add(new Coworker
+            {
+                ID = ID,
+                FirstName = FirstName,
+                LastName = LastName,
+                Role = Role,
+                Notes = Notes
+            });
         }
 
     }

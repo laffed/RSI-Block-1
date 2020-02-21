@@ -18,7 +18,6 @@ const navSlide = () => {
 function filterItems(arr, query = document.getElementById("myInput")) {
   let input = query.value;
 
-  //if string is empty do not return table, if input is "*", dispaly entire DB
   if (input.length === 0) {
     return [];
   } else if (input === "*") {
@@ -30,9 +29,40 @@ function filterItems(arr, query = document.getElementById("myInput")) {
   });
 }
 
+function singleSearch() {
+  async function APISearch() {
+    let query = document.getElementById("myInput").value;
+    let response = await fetch(`https://localhost:44327//api/Values/${query}`);
+    let result = await response.json();
+    let searchedData = [];
+    searchedData.push(result);
+    console.log("single", searchedData, typeof searchedData);
+    let table = document.getElementById("tableEntries");
+    let tableHtml = "";
+    table.innerHTML = "";
+
+    function createRow(item) {
+      let rowHtml = `
+      <tr>
+        <td>${item.ID}</td>
+        <td>${item.FirstName}</td>
+        <td>${item.LastName}</td>
+        <td>${item.Role}</td>
+        <td>${item.Notes}</td>
+      </tr>
+    `;
+      tableHtml += rowHtml;
+    }
+
+    searchedData.map(item => createRow(item));
+    table.innerHTML = tableHtml;
+  }
+  APISearch();
+}
+
 function searchAndMake() {
   async function APISearch() {
-    let response = await fetch("https://localhost:44327//api/Values"); //Address subject to change if .NET api local address changes
+    let response = await fetch("https://localhost:44327//api/Values");
     let result = await response.json();
     console.log(result);
     let searchedData = filterItems(result.Data);
@@ -58,6 +88,13 @@ function searchAndMake() {
   }
   APISearch();
 }
+
+const node = document.getElementById("myInput");
+node.addEventListener("keyup", function(event) {
+  if (event.key === "Enter") {
+    searchAndMake();
+  }
+});
 
 function printPage() {
   window.print();
